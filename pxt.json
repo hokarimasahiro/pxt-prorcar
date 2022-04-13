@@ -7,8 +7,6 @@
     },
     "files": [
         "README.md",
-        "porocar.ts",
-        "sendBuffer.asm",
         "test.ts"
     ],
     "testFiles": [
