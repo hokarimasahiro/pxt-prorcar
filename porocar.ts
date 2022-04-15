@@ -83,10 +83,11 @@ namespace porocar {
      * @param speedL Left Moter Power in -255 to 255. eg:50
      * @param speedR Right Motor Power in -255 to 255. eg:50
      */
+    //% weight=90 blockGap=8
     //% blockId="CarCtrl" block="CarCtrl| left %speedL| right %speedR"
     //% speedL.min=-255 speedL.max=255 speedR.min=-255 speedR.max=255
     export function carCtrl(speedL: number, speedR: number): void {
-
+        plotBarGraph(speedL,speedR);
         let wSpeedL = Math.constrain(speedL, -255, 255);
         let wSpeedR = Math.constrain(speedR, -255, 255);
 
@@ -96,6 +97,7 @@ namespace porocar {
     /**
      * Sense a line color for number
      */
+    //% weight=85 blockGap=8
     //% blockId="get_line_color_N" block="lineColorN|direct %direct"
     export function getLineColorN(direct: Position): number {
         if (direct == Position.Left)
@@ -106,6 +108,7 @@ namespace porocar {
     /**
      * Sense a line color.
      */
+    //% weight=80 blockGap=8
     //% blockId="get_line_color" block="lineColor|direct %direct|color %color"
     export function getLineColor(direct: Position, color: lineColor): boolean {
         return getLineColorN(direct) == color;
@@ -114,6 +117,7 @@ namespace porocar {
     /**
      * Get Distance.
      */
+    //% weight=75 blockGap=8
     //% blockId="Get_distance" block="get distance(cm)"
     export function getDistance(): number {
 
@@ -142,6 +146,7 @@ namespace porocar {
      * @param l Left level in -255 to 255. eg:50
      * @param r Right level in -255 to 255. eg:50
      */
+    //% weight=70 blockGap=8
     //% blockId="plotBarGraph" block="plotBarGraph|%l|%r"
     //% l.min=-255 l.max=255 r.min=-255 r.max=255
     export function plotBarGraph(l: number, r: number): void {
@@ -185,7 +190,8 @@ namespace porocar {
      * Shows all LEDs to a given color (range 0-255 for r, g, b). 
      * @param rgb RGB color of the LED
      */
-    //% blockId="set_set_color" block="set neo color %rgb=carcontrol_colors" 
+    //% weight=65 blockGap=8
+    //% blockId="set_set_color" block="set neo color %rgb=carcontrol_colors"
     export function setNeoColor(rgb: number) {
         rgb = rgb >> 0;
         setAllRGB(rgb);
@@ -197,7 +203,8 @@ namespace porocar {
      * @param pixeloffset position of the Neo
      * @param rgb RGB color of the LED
      */
-    //% blockId="et_neo_pixel_color" block="set neo pixel color at %pixeloffset|to %rgb=carcontrol_colors" 
+    //% weight=60 blockGap=8
+    //% blockId="et_neo_pixel_color" block="set neo pixel color at %pixeloffset|to %rgb=carcontrol_colors"
     export function setNeoPixelColor(pixeloffset: number, rgb: number): void {
         rgb = rgb >> 0;
         setPixelRGB(pixeloffset >> 0, rgb);
@@ -229,6 +236,7 @@ namespace porocar {
      * Set NeoPixel brightness.
      * @param bright in 0-255. eg:50
      */
+    //% weight=55 blockGap=8
     //% blockId="set_Neo_Brightness" block="set Neo Brightness %bright"
     //% bright.min=0 bright.max=255
     export function setNeoBrightness(bright: number): void {
@@ -281,6 +289,7 @@ namespace porocar {
      * @param green value of the green channel between 0 and 255. eg: 255
      * @param blue value of the blue channel between 0 and 255. eg: 255
      */
+    //% weight=50 blockGap=8
     //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
     //% red.min=0 red.max=255 green.min=0 green.max=255 blue.min=0 blue.max=255
     export function rgb(red: number, green: number, blue: number): number {
@@ -294,6 +303,7 @@ namespace porocar {
     /**
      * Gets the RGB value of a known color
     */
+    //% weight=45 blockGap=8
     //% blockId="carcontrol_colors" block="%color"
     export function colors(color: RGBColors): number {
         return color;
