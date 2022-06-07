@@ -63,11 +63,11 @@ namespace porocar {
 
     function setPwmMotor(speedL: number, speedR: number): void {
         if (speedL >= 0) {
-            pins.digitalWritePin(DigitalPin.P13, 0)
-            pins.analogWritePin(AnalogPin.P14, speedL * 4);
-        } else {
             pins.digitalWritePin(DigitalPin.P14, 0)
-            pins.analogWritePin(AnalogPin.P13, (0 - speedL) * 4);
+            pins.analogWritePin(AnalogPin.P13, speedL * 4);
+        } else {
+            pins.digitalWritePin(DigitalPin.P13, 0)
+            pins.analogWritePin(AnalogPin.P14, (0 - speedL) * 4);
         }
         if (speedR >= 0) {
             pins.digitalWritePin(DigitalPin.P15, 0)
@@ -87,7 +87,7 @@ namespace porocar {
     //% blockId="CarCtrl" block="CarCtrl| left %speedL| right %speedR"
     //% speedL.min=-255 speedL.max=255 speedR.min=-255 speedR.max=255
     export function carCtrl(speedL: number, speedR: number): void {
-        plotBarGraph(speedL,speedR);
+
         let wSpeedL = Math.constrain(speedL, -255, 255);
         let wSpeedR = Math.constrain(speedR, -255, 255);
 
